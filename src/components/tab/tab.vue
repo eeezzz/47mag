@@ -1,0 +1,45 @@
+<template>
+  <div class="tab">
+    <!-- router-link 默认渲染的是a, 可以用tag来改变 -->
+    <router-link tag="div" class="tab-item" to="/recommend">
+      <span class="tab-link">首頁</span>
+    </router-link>
+    <router-link tag="div" class="tab-item" to="/user">
+      <span class="tab-link">我的音樂櫃</span>
+    </router-link>
+    <router-link tag="div" class="tab-item" to="/rank">
+      <!-- <span class="tab-link">排手</span> -->
+    </router-link>
+    <router-link tag="div" class="tab-item" to="/search">
+      <!-- <span class="tab-link">搜索</span> -->
+    </router-link>
+  </div>
+</template>
+
+<script>
+  export default {
+
+  }
+</script>
+
+<style scoped lang="stylus" rel="stylesheet/stylus">
+  @import "~common/stylus/variable"
+  .tab
+    display: flex
+    height: 34px
+    line-height: 34px
+    font-size: $font-size-medium
+    background: #f7b500
+    .tab-item
+      flex: 1
+      text-align: center
+      .tab-link
+        padding-bottom: 5px
+        // color: $color-text-l
+        color: black
+      &.router-link-active
+        .tab-link
+          color: $color-theme
+          border-bottom: 2px solid $color-theme
+</style>
+
