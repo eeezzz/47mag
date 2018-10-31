@@ -69,17 +69,17 @@
             <div class="icon i-left" @click="changeMode">
               <i :class="iconMode"></i>
             </div>
-            <div class="icon i-left">
+            <div class="icon i-left" :class="disableCls">
               <i @click="prev" class="icon-prev"></i>
             </div>
-            <div class="icon i-center">
+            <div class="icon i-center" :class="disableCls">
               <i @click="togglePlaying" :class="playIcon"></i>
             </div>
-            <div class="icon i-right">
+            <div class="icon i-right" :class="disableCls">
               <i @click="next" class="icon-next"></i>
             </div>
             <div class="icon i-right">
-              <div class="icon" @click="toggleFavorite(currentSong)" :class="getFavoriteIcon(currentSong)"></div>
+              <i class="icon" @click="toggleFavorite(currentSong)" :class="getFavoriteIcon(currentSong)"></i>
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@
       </div>
     </transition>
     <play-list ref="playlist"></play-list>
-    <audio ref="audio" type="audio/mpeg" :src="currentSong.url" @canplay="ready" @error="error" @timeupdate="updateTime" @ended="end"></audio>
+    <audio ref="audio" type="audio/mpeg" :src="currentSong.url" @play="ready" @error="error" @timeupdate="updateTime" @ended="end"></audio>
     <!-- <audio ref="audio" src="/static/audios/missyou.mp3" ></audio> -->
     <!-- <audio ref="audio" src="http://localhost:82/audios/missyou.mp3" ></audio> -->
   </div>
@@ -394,7 +394,7 @@ export default {
       let offsetWidth
       let opacity
       if (this.currentShow === 'cd') { // 從右向左滑
-        if (this.touch.percent > 0.1) {
+        if (this.touch.percent > 0.2) {
           offsetWidth = -window.innerWidth
           opacity = 0
           this.currentShow = 'lyric'
@@ -403,7 +403,7 @@ export default {
           opacity = 1
         }
       } else { // 從左向左滑
-        if (this.touch.percent < 0.9) {
+        if (this.touch.percent < 0.8) {
           offsetWidth = 0
           this.currentShow = 'cd'
           opacity = 1
@@ -464,10 +464,12 @@ export default {
       }
       if (this.currentLyric) {
         this.currentLyric.stop()
+        this.currentTime = 0
       }
-      console.log(newSong.id, oldSong.id, newSong.url)
-      setTimeout(() => {
-        // this.$refs.audio.currentTime = 0
+      // console.log(newSong.id, oldSong.id, newSong.url)
+      clearTimeout(this.timer)
+      this.timer = setTimeout(() => {
+        this.$refs.audio.currentTime = 0
         this.$refs.audio.play()
         // this.getLyric()
       }, 1000)
@@ -476,7 +478,7 @@ export default {
       const audio = this.$refs.audio
       this.$nextTick(() => {
         newPlaying ? audio.play() : audio.pause()
-        console.log('wplaying', newPlaying)
+        // console.log('wplaying', newPlaying)
       })
     }
   },
@@ -525,7 +527,7 @@ export default {
           .icon-back
             display: block
             padding: 9px
-            font-size: $font-size-medium
+            font-size: $font-size-medium-x
             color: $color-theme
             transform: rotate(-90deg)
         .title
@@ -672,6 +674,7 @@ export default {
             text-align: left
           .icon-favorite
             color: $color-sub-theme
+            font-size: 25px
       &.normal-enter-active, &.normal-leave-active
         transition: all 0.4s
         .top, .bottom

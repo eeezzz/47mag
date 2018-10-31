@@ -21,11 +21,11 @@
           <ul>
             <li @click="selectItem(item)" v-for="(item, index) in discList" :key="index" class="item">
               <div class="icon">
-                <img width="60" height="70" v-lazy="item.imgurl"/>
+                <img width="60" height="70" v-lazy="item.imgMagCoverUrl"/>
               </div>
               <div class="text">
-                <h2 class="name" v-html="item.creator.name"></h2>
-                <p class="desc" v-html="item.dissname"></p>
+                <h2 class="name" v-html="item.name"></h2>
+                <p class="desc" v-html="item.desc"></p>
               </div>
             </li>
           </ul>
@@ -77,7 +77,7 @@ export default {
     selectItem(item) {
       console.log('selectItem')
       this.$router.push({
-        path: `/recommend/${item.dissid}`
+        path: `/recommend/${item.id}`
       })
       this.setDisc(item)
     },

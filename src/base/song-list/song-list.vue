@@ -2,7 +2,8 @@
 	<div class="song-list">
 		<ul>
 			<li @click="selectItem(song, index)" v-for="(song, index) in songs" :key="song.id" class="item">
-				<div class="photo"><img :src="song.image" ></div>
+				<!-- <div class="photo"><img :src="song.image" ></div> -->
+				<div class="photo"><img v-lazy="song.image" ></div>
 				<div class="content">
 					<h2 class="name">{{song.name}}</h2>
 					<p class="desc">{{getDesc(song)}}</p>

@@ -105,7 +105,7 @@ export default {
     .icon-back {
       display: block;
       padding: 10px;
-      font-size: $font-size-medium;
+      font-size: $font-size-medium-x;
       color: $color-theme;
     }
   }

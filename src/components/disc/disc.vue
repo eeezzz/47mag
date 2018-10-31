@@ -15,10 +15,10 @@ import { createSong } from 'common/js/song'
 export default {
   computed: {
     title() {
-      return this.disc.dissname
+      return this.disc.name
     },
     bgImage() {
-      return this.disc.imgurlDisc
+      return this.disc.imgDiscUrl
     },
     ...mapGetters(['disc'])
   },
@@ -32,11 +32,11 @@ export default {
   },
   methods: {
     _getSongList() {
-      if (!this.disc.dissid) {
+      if (!this.disc.id) {
         this.$router.push('/recommend')
         return
       }
-      getSongList(this.disc.dissid).then(res => {
+      getSongList(this.disc.id).then(res => {
         if (res.code === ERR_OK) {
           console.log('res.data.list', res.data.list)
           this.songs = this._normalizeSongs(res.data.list)
@@ -63,7 +63,8 @@ export default {
       console.log('_normalizeSongs->', list)
       let ret = []
       list.forEach(musicData => {
-        if (musicData.songid && musicData.albummid) {
+        // if (musicData.songid && musicData.albummid) {
+        if (musicData.songUrl && musicData.imgUrl) {
           ret.push(createSong(musicData))
         }
       })

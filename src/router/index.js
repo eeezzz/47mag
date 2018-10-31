@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
+import ga from 'vue-ga'
+// import VueAnalytics from 'vue-analytics'
 import Recommend from 'components/recommend/recommend'
 import Singer from 'components/singer/singer'
 import Rank from 'components/rank/rank'
@@ -9,10 +10,10 @@ import SingerDetail from 'components/singer-detail/singer-detail'
 import Disc from 'components/disc/disc'
 import UserCenter from 'components/user-center/user-center'
 
-
 Vue.use(Router)
 
-export default new Router({
+
+var router = new Router({
   routes: [
     {
       path: '/',
@@ -57,3 +58,6 @@ export default new Router({
     }
   ]
 })
+
+ga(router, 'UA-105074-24')
+export default router

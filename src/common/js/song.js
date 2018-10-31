@@ -42,16 +42,20 @@ export default class Song {
 export function createSong(musicData) {
   // console.log('song.js', musicData.lyric)
   return new Song({
-    id: musicData.songid,
+    // id: musicData.songid,
+    id: musicData.id,
     mid: musicData.songmid,
     singer: filterSinger(musicData.singer),
-    name: musicData.songname,
-    album: musicData.albumname,
+    // name: musicData.songname,
+    name: musicData.name,
+    album: musicData.desc,
     duration: musicData.interval,
 
-    image: `http://47musicbe.hsin-yi.org.tw/Pic/songpic/${musicData.albummid}.jpg`,
+    // image: `http://47musicbe.hsin-yi.org.tw/Pic/songpic/${musicData.albummid}.jpg`,
+    image: musicData.imgUrl,
 
-    url: `http://47musicbe.hsin-yi.org.tw/songs/${musicData.songid}.m4a`,
+    // url: `http://47musicbe.hsin-yi.org.tw/songs/${musicData.songid}.m4a`,
+    url: musicData.songUrl,
     // url: `http://media.kimy.com.tw/mag/47/201810/${musicData.songid}.m4a`,
     // url: `http://wowza01.hsin-yi.org.tw/vod/_definst_/4-7/201810/mp3:${musicData.songid}.mp3`,
     lyric: musicData.lyric

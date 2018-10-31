@@ -146,7 +146,7 @@
       .icon-back
         display: block
         padding: 15px 10px 15px 5px
-        font-size: $font-size-medium
+        font-size: $font-size-medium-x
         color: $color-theme
     .title
       position: absolute

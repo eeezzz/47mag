@@ -14,7 +14,7 @@ export function getRecommend() {
   // })
 
   // return jsonp(url, data, options)
-  const url = 'http://47musicbe.hsin-yi.org.tw/api/slider'
+  const url = 'https://apiservices.kimy.com.tw/mag/api/getSliders'
   return axios.get(url).then(res => {
     // console.log('getSlider', res.data)
     return Promise.resolve(res.data)
@@ -22,7 +22,7 @@ export function getRecommend() {
 }
 
 export function getDiscList() {
-  const url = 'http://47musicbe.hsin-yi.org.tw/api/mag'
+  const url = 'https://apiservices.kimy.com.tw/mag/api/getMaglist'
 
   //   const data = Object.assign({}, commonParams, {
   //     platform: 'yqq',
@@ -44,7 +44,7 @@ export function getDiscList() {
 
 export function getSongList(disstid) {
   // const url = debug ? '/api/getCdInfo' : 'http://ustbhuangyi.com/music/api/getCdInfo'
-  const url = `http://47musicbe.hsin-yi.org.tw/api/cdlist/${disstid}`
+  const url = `https://apiservices.kimy.com.tw/mag/api/getCdList/${disstid}`
 
 //   const data = Object.assign({}, commonParams, {
 //     disstid,
