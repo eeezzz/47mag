@@ -21,20 +21,25 @@
   .m-header
     position: relative
     height: 53px
-    text-align: center
+    // text-align: center
     color: $color-theme
     font-size: 0
-    bg-image-jpg('header')
-    background-size: 100% 100%
+    background: #f7b500
+    // bg-image-jpg('47sun')
+    // bg-image-jpg('header')
+    // background-size: 100% 100%
+    // background-size: cover
     .icon
       display: inline-block
       vertical-align: top
-      margin-top: 6px
-      width: 30px
-      height: 32px
-      margin-right: 9px
-      // bg-image('logo')
-      background-size: 30px 32px
+      // margin-top: 3px
+      width: 184px
+      height: 55px
+      margin-left: 35px
+      // padding-right: 30px
+      bg-image('47sun')
+      // bg-image-jpg('47sun')
+      background-size: 184px 55px
     .text
       display: inline-block
       vertical-align: top
